@@ -34,9 +34,9 @@ More info in the DOCUMENTATION.md file.
 - Fully parameterizable
 
 ## Requirements
-- Browser: any HTML4 or HTML5 browser (starting from IE6!). No extension or administrative rights required. Clipboard syncing requires Chrome (or async clipboard API support) and HTTPS connection
-- Gateway (myrtille): Windows 8.1 or Windows Server 2012 R2 or greater (IIS 8.0+, .NET 4.5+ and WCF/HTTP activation enabled). CAUTION! IIS on Windows client OSes (7, 8, 10) is limited to 10 simultaneous connections only — across all HTTP sessions — and will hang after that! use Windows Server editions for production environments.
-- RDP server: any RDP enabled machine (preferably Windows Server but can also be Windows XP, 7, 8, 10 or Linux xRDP server).
+- Browser: any HTML4 or HTML5 browser (starting from IE6!). No extension or administrative rights required. The clipboard synchronization requires Chrome (or async clipboard API support) and HTTPS connection
+- Gateway (myrtille): Windows Server OS (2012 R2 or greater, with IIS 8.0+, .NET 4.5+ and WCF/HTTP activation enabled). CAUTION! IIS on Windows client OSes (7, 8, 10 - all versions) is limited to 10 simultaneous connections only - across all http sessions - and will hang after that!
+- RDP server: any RDP enabled machine (preferably Windows Server but can also be Windows XP, 7, 8, 10 or Linux xRDP server)
 - SSH server: any SSH server (tests were made using the built-in Windows 10 OpenSSH server)
 
 ## Resources
