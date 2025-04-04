@@ -1,0 +1,3 @@
+[submodule "Myrtille.RDP/FreeRDP"]
+	path = Myrtille.RDP/FreeRDP
+	url = https://github.com/simonegli8/FreeRDP
