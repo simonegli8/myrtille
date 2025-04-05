@@ -21,7 +21,7 @@ using System.Collections;
 using System.Diagnostics;
 using Myrtille.Services.Contracts;
 
-namespace Myrtille.Admin.Services
+namespace Myrtille.Services
 {
     public class ConnectionService : IConnectionService
     {
