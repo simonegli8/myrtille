@@ -33,7 +33,7 @@ namespace Myrtille.Admin.Services
 
         private static Hashtable connections = new Hashtable();
 
-        public Guid GetConnectionId(ConnectionInfo connectionInfo)
+        public virtual Guid GetConnectionId(ConnectionInfo connectionInfo)
         {
             var connection = new Connection
             {
@@ -54,7 +54,7 @@ namespace Myrtille.Admin.Services
             return connection.Id;
         }
 
-        public ConnectionInfo GetConnectionInfo(Guid connectionId)
+        public virtual ConnectionInfo GetConnectionInfo(Guid connectionId)
         {
             var connection = connections[connectionId] as Connection;
             if (connection != null)
@@ -76,7 +76,7 @@ namespace Myrtille.Admin.Services
             }
         }
 
-        public bool IsUserAllowedToConnectHost(string domain, string userName, string hostIPAddress, Guid VMGuid)
+        public virtual bool IsUserAllowedToConnectHost(string domain, string userName, string hostIPAddress, Guid VMGuid)
         {
             // this method is just an empty shell
             // have your own implementation to allow or deny user access to a given host
@@ -90,7 +90,7 @@ namespace Myrtille.Admin.Services
             return false;
         }
 
-        public bool SetConnectionState(Guid connectionId, string IPAddress, Guid VMGuid, RemoteSessionState state)
+        public virtual bool SetConnectionState(Guid connectionId, string IPAddress, Guid VMGuid, RemoteSessionState state)
         {
             var connection = connections[connectionId] as Connection;
             if (connection != null)
@@ -104,7 +104,7 @@ namespace Myrtille.Admin.Services
             return false;
         }
 
-        public bool SetConnectionExitCode(Guid connectionId, string IPAddress, Guid VMGuid, RemoteSessionExitCode exitCode)
+        public virtual bool SetConnectionExitCode(Guid connectionId, string IPAddress, Guid VMGuid, RemoteSessionExitCode exitCode)
         {
             var connection = connections[connectionId] as Connection;
             if (connection != null)

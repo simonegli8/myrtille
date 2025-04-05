@@ -33,6 +33,11 @@ namespace Myrtille.Services
 {
     public class RemoteSessionProcess : IRemoteSessionProcess, IDisposable
     {
+        public RemoteSessionProcess() { }
+        public RemoteSessionProcess(IRemoteSessionProcessCallback callback) {
+            _callback = callback;
+        }
+
         #region Drain
 
         // CAUTION! the 2 methods below require some permissions to operate; running Myrtille.Services under the (default) "LocalSystem" account may not be sufficient
@@ -107,7 +112,7 @@ namespace Myrtille.Services
         private Process _process;
         private IRemoteSessionProcessCallback _callback;
 
-        public void StartProcess(
+        public virtual void StartProcess(
             Guid remoteSessionId,
             HostType hostType,
             SecurityProtocol securityProtocol,
@@ -175,11 +180,15 @@ namespace Myrtille.Services
                 }
                 else
                 {
+#if Myrtille
                     _process.StartInfo.FileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, clientFileName);
+#else
+                    _process.StartInfo.FileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "bin", clientFileName);
+#endif
                 }
 
-                // ensure the host client executable does exists
-                if (!File.Exists(_process.StartInfo.FileName))
+				// ensure the host client executable does exists
+				if (!File.Exists(_process.StartInfo.FileName))
                 {
                     var msg = string.Format("The host client executable ({0}) is missing. Please read documentation for steps to build it", _process.StartInfo.FileName);
                     if (Environment.UserInteractive)
@@ -388,7 +397,7 @@ namespace Myrtille.Services
 
                 // set the callback instance
                 // the wcf service binding "wsDualHttpBinding" allows for duplex communication
-                _callback = OperationContext.Current.GetCallbackChannel<IRemoteSessionProcessCallback>();
+                _callback = _callback ?? OperationContext.Current.GetCallbackChannel<IRemoteSessionProcessCallback>();
 
                 _process.Start();
             }
@@ -398,7 +407,7 @@ namespace Myrtille.Services
             }
         }
 
-        public void StopProcess()
+        public virtual void StopProcess()
         {
             // RDP: after closing the client, the remote session remains active on the server and is resumed on a subsequent connection of the same user...
             // to avoid this, set the rdp session disconnect timeout to a low value (ie: 1 sec)
@@ -420,7 +429,7 @@ namespace Myrtille.Services
             }
         }
 
-        public string GetProcessIdentity()
+        public virtual string GetProcessIdentity()
         {
             return Environment.UserName;
         }
@@ -489,7 +498,7 @@ namespace Myrtille.Services
             }
         }
 
-        #endregion
+#endregion
 
         #region NumLock
 
@@ -506,12 +515,13 @@ namespace Myrtille.Services
 
         private static bool GetNumLock()
         {
-            return (((ushort)GetKeyState(0x90)) & 0xffff) != 0;
+            return Console.NumberLock;
+            //return (((ushort)GetKeyState(0x90)) & 0xffff) != 0;
         }
 
         private static void SetNumLock(bool state)
         {
-            if (GetNumLock() != state)
+            if (Environment.OSVersion.Platform == PlatformID.Win32NT && GetNumLock() != state)
             {
                 keybd_event(VK_NUMLOCK, 0x45, KEYEVENTF_EXTENDEDKEY | KEYEVENTF_KEYDOWN, 0);
                 keybd_event(VK_NUMLOCK, 0x45, KEYEVENTF_EXTENDEDKEY | KEYEVENTF_KEYUP, 0);

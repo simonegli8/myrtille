@@ -29,14 +29,14 @@ using Myrtille.Web.Properties;
 
 namespace Myrtille.Web
 {
-    public class RemoteSessionProcessClient : DuplexClientBase<IRemoteSessionProcess>, IRemoteSessionProcess
+    public class RemoteSessionProcessClient : Services.RemoteSessionProcess
     {
         private RemoteSessionManager _remoteSessionManager;
         private object _processStartLock;
         private bool _processStarted = false;
 
-        public RemoteSessionProcessClient(RemoteSessionManager remoteSessionManager, InstanceContext callbackContext)
-            : base(callbackContext)
+        public RemoteSessionProcessClient(RemoteSessionManager remoteSessionManager, IRemoteSessionProcessCallback callback)
+            : base(callback)
         {
             _remoteSessionManager = remoteSessionManager;
             _processStartLock = new object();
@@ -57,7 +57,7 @@ namespace Myrtille.Web
             }
         }
 
-        public void StartProcess(
+        public override void StartProcess(
             Guid remoteSessionId,
             HostType hostType,
             SecurityProtocol securityProtocol,
@@ -78,7 +78,7 @@ namespace Myrtille.Web
             {
                 try
                 {
-                    Channel.StartProcess(
+                   base.StartProcess(
                         remoteSessionId,
                         hostType,
                         securityProtocol,
@@ -103,12 +103,12 @@ namespace Myrtille.Web
             }
         }
 
-        public void StopProcess()
+        public override void StopProcess()
         {
             try
             {
                 Trace.TraceInformation("Calling service stop process, remote session {0}", _remoteSessionManager.RemoteSession.Id);
-                Channel.StopProcess();
+                base.StopProcess();
             }
             catch (Exception exc)
             {
@@ -117,12 +117,12 @@ namespace Myrtille.Web
             }
         }
 
-        public string GetProcessIdentity()
+        public override string GetProcessIdentity()
         {
             try
             {
                 Trace.TraceInformation("Retrieving service process identity, remote session {0}", _remoteSessionManager.RemoteSession.Id);
-                return Channel.GetProcessIdentity();
+                return base.GetProcessIdentity();
             }
             catch (Exception exc)
             {

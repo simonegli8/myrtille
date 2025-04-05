@@ -24,5 +24,32 @@ using Myrtille.Services.Contracts;
 
 namespace Myrtille.Web
 {
-    public class PrinterClient : Services.PrinterService { }
+	public class PrinterClient : Services.PrinterService
+	{
+		public override Stream GetPdfFile(Guid remoteSessionId, string fileName)
+		{
+			try
+			{
+				return base.GetPdfFile(remoteSessionId, fileName);
+			}
+			catch (Exception exc)
+			{
+				Trace.TraceError("Failed to download pdf file {0}, remote session {1} ({2})", fileName, remoteSessionId, exc);
+				throw;
+			}
+		}
+
+		public override void DeletePdfFile(Guid remoteSessionId, string fileName)
+		{
+			try
+			{
+				base.DeletePdfFile(remoteSessionId, fileName);
+			}
+			catch (Exception exc)
+			{
+				Trace.TraceError("Failed to delete pdf file {0}, remote session {1} ({2})", fileName, remoteSessionId, exc);
+				throw;
+			}
+		}
+	}
 }

@@ -23,5 +23,58 @@ using Myrtille.Services.Contracts;
 
 namespace Myrtille.Web
 {
-    public class MFAAuthenticationClient : Services.MFAAuthentication { }
+	public class MFAAuthenticationClient : Services.MFAAuthentication
+	{
+		public override bool GetState()
+		{
+			try
+			{
+				return base.GetState();
+			}
+			catch (Exception exc)
+			{
+				Trace.TraceError("Failed to get mfa adapter state ({0})", exc);
+				return false;
+			}
+		}
+
+		public override bool Authenticate(string username, string password, string clientIP = null)
+		{
+			try
+			{
+				return base.Authenticate(username, password, clientIP);
+			}
+			catch (Exception exc)
+			{
+				Trace.TraceError("Failed to mfa authenticate user {0} ({1})", username, exc);
+				return false;
+			}
+		}
+
+		public override string GetPromptLabel()
+		{
+			try
+			{
+				return base.GetPromptLabel();
+			}
+			catch (Exception exc)
+			{
+				Trace.TraceError("Failed to get mfa prompt label ({0})", exc);
+				return null;
+			}
+		}
+
+		public override string GetProviderURL()
+		{
+			try
+			{
+				return base.GetProviderURL();
+			}
+			catch (Exception exc)
+			{
+				Trace.TraceError("Failed to get mfa provider url ({0})", exc);
+				return null;
+			}
+		}
+	}
 }

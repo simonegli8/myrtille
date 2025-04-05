@@ -304,6 +304,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Dlls\*.dll" Link="%(RecursiveDir)%(Filename)%(Extension)">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="css\xterm.css" />
     <Content Include="handlers\EventSourceHandler.ashx" />
     <Content Include="favicon.ico" />
@@ -521,9 +526,29 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Myrtille.Admin.Services\Myrtille.Admin.Services.csproj">
+      <Project>{2705b2a1-b47a-4e4d-96f9-bace48f9a807}</Project>
+      <Name>Myrtille.Admin.Services</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Myrtille.Common\Myrtille.Common.csproj">
       <Project>{37630774-1321-4E6A-8661-4430A8946E9E}</Project>
       <Name>Myrtille.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Myrtille.Enterprise\Myrtille.Enterprise.csproj">
+      <Project>{9e4bf7c3-8ea3-428c-bea3-06cc3afcaeb4}</Project>
+      <Name>Myrtille.Enterprise</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Myrtille.MFAProviders\Myrtille.MFAProviders.csproj">
+      <Project>{3573c84d-5fd3-4bac-bf96-20b9fd0709ff}</Project>
+      <Name>Myrtille.MFAProviders</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Myrtille.Printer\Myrtille.Printer.csproj">
+      <Project>{71ab3401-1b1a-4ef0-8870-be9d822969a6}</Project>
+      <Name>Myrtille.Printer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Myrtille.RDP\Myrtille.RDP.csproj">
+      <Project>{01e631b8-2a75-4c16-bae9-e7f0523d89b1}</Project>
+      <Name>Myrtille.RDP</Name>
     </ProjectReference>
     <ProjectReference Include="..\Myrtille.Services.Contracts\Myrtille.Services.Contracts.csproj">
       <Project>{010e1702-3045-4b13-bfb6-06ffc60b5cbb}</Project>
@@ -532,6 +557,10 @@
     <ProjectReference Include="..\Myrtille.Services\Myrtille.Services.csproj">
       <Project>{5f357488-8def-4e95-874e-fc526d92de29}</Project>
       <Name>Myrtille.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Myrtille.SSH\Myrtille.SSH.csproj">
+      <Project>{a129611e-2b4e-4bdf-a083-9d3cee7f149f}</Project>
+      <Name>Myrtille.SSH</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

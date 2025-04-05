@@ -47,11 +47,12 @@ namespace Myrtille.Web
 
                 // remote session process client and callback
                 var callback = new RemoteSessionProcessClientCallback(this, HttpContext.Current.Application);
-                var callbackContext = new InstanceContext(callback);
-                HostClient = new RemoteSessionProcessClient(this, callbackContext);
+				//var callbackContext = new InstanceContext(callback);
+				//HostClient = new RemoteSessionProcessClient(this, callbackContext);
+				HostClient = new RemoteSessionProcessClient(this, callback);
 
-                // clients
-                Clients = new Dictionary<string, RemoteSessionClient>();
+				// clients
+				Clients = new Dictionary<string, RemoteSessionClient>();
                 ClientsLock = new object();
 
                 // pipes

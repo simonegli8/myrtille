@@ -23,7 +23,7 @@ namespace Myrtille.Services
 {
     public class ApplicationPoolService : IApplicationPoolService
     {
-        public void RecycleApplicationPool(string poolName)
+        public virtual void RecycleApplicationPool(string poolName)
         {
             /*
             for this to work, the myrtille services need to run on the same machine as the myrtille gateway

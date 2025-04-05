@@ -25,7 +25,7 @@ namespace Myrtille.Services
 {
     public class PrinterService : IPrinterService
     {
-        public Stream GetPdfFile(Guid remoteSessionId, string fileName)
+        public virtual Stream GetPdfFile(Guid remoteSessionId, string fileName)
         {
             Stream fileStream = null;
 
@@ -44,7 +44,7 @@ namespace Myrtille.Services
             return fileStream;
         }
 
-        public void DeletePdfFile(Guid remoteSessionId, string fileName)
+        public virtual void DeletePdfFile(Guid remoteSessionId, string fileName)
         {
             try
             {

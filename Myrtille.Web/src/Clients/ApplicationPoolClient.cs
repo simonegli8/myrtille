@@ -23,7 +23,19 @@ using Myrtille.Services.Contracts;
 
 namespace Myrtille.Web
 {
-    public class ApplicationPoolClient : Services.ApplicationPoolService
-    {
-    }
+	public class ApplicationPoolClient : Services.ApplicationPoolService
+	{
+		public override void RecycleApplicationPool(string poolName)
+		{
+			try
+			{
+				base.RecycleApplicationPool(poolName);
+			}
+			catch (Exception exc)
+			{
+				Trace.TraceError("Failed to recyle application pool {0} ({1})", poolName, exc);
+				throw;
+			}
+		}
+	}
 }

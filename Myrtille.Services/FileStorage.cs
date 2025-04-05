@@ -27,7 +27,7 @@ namespace Myrtille.Services
 {
     public class FileStorage : IFileStorage
     {
-        public List<string> GetUserDocumentsFolderFiles(
+        public virtual List<string> GetUserDocumentsFolderFiles(
             Guid remoteSessionId,
             string userDomain,
             string userName,
@@ -51,7 +51,7 @@ namespace Myrtille.Services
             }
         }
 
-        public void UploadFileToUserDocumentsFolder(
+        public virtual void UploadFileToUserDocumentsFolder(
             UploadRequest uploadRequest)
         {
             var documentsFolder = AccountHelper.GetUserDocumentsFolder(uploadRequest.UserDomain, uploadRequest.UserName, uploadRequest.UserPassword);
@@ -86,7 +86,7 @@ namespace Myrtille.Services
             Trace.TraceInformation("Uploaded file {0} to user {1} documents folder {2}, remote session {3}", uploadRequest.FileName, uploadRequest.UserName, documentsFolder, uploadRequest.RemoteSessionId);
         }
 
-        public Stream DownloadFileFromUserDocumentsFolder(
+        public virtual Stream DownloadFileFromUserDocumentsFolder(
             Guid remoteSessionId,
             string userDomain,
             string userName,

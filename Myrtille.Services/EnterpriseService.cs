@@ -27,12 +27,12 @@ namespace Myrtille.Services
 {
     public class EnterpriseService : IEnterpriseService
     {
-        public EnterpriseMode GetMode()
+        public virtual EnterpriseMode GetMode()
         {
             return Program._enterpriseAdapter == null ? EnterpriseMode.None : (Program._enterpriseAdapter is LocalAdmin ? EnterpriseMode.Local : EnterpriseMode.Domain);
         }
 
-        public EnterpriseSession Authenticate(string username, string password)
+        public virtual EnterpriseSession Authenticate(string username, string password)
         {
             try
             {
@@ -46,7 +46,7 @@ namespace Myrtille.Services
             }
         }
 
-        public void Logout(string sessionID)
+        public virtual void Logout(string sessionID)
         {
             try
             {
@@ -58,7 +58,7 @@ namespace Myrtille.Services
             }
         }
 
-        public long? AddHost(EnterpriseHostEdit editHost, string sessionID)
+        public virtual long? AddHost(EnterpriseHostEdit editHost, string sessionID)
         {
             try
             {
@@ -71,7 +71,7 @@ namespace Myrtille.Services
             }
         }
 
-        public EnterpriseHostEdit GetHost(long hostID, string sessionID)
+        public virtual EnterpriseHostEdit GetHost(long hostID, string sessionID)
         {
             try
             {
@@ -85,7 +85,7 @@ namespace Myrtille.Services
             }
         }
 
-        public bool UpdateHost(EnterpriseHostEdit editHost, string sessionID)
+        public virtual bool UpdateHost(EnterpriseHostEdit editHost, string sessionID)
         {
             try
             {
@@ -99,7 +99,7 @@ namespace Myrtille.Services
             }
         }
 
-        public bool DeleteHost(long hostID, string sessionID)
+        public virtual bool DeleteHost(long hostID, string sessionID)
         {
             try
             {
@@ -113,7 +113,7 @@ namespace Myrtille.Services
             }
         }
 
-        public List<EnterpriseHost> GetSessionHosts(string sessionID)
+        public virtual List<EnterpriseHost> GetSessionHosts(string sessionID)
         {
             try
             {
@@ -127,7 +127,7 @@ namespace Myrtille.Services
             }
         }
 
-        public EnterpriseConnectionDetails GetSessionConnectionDetails(string sessionID, long hostID, string sessionKey)
+        public virtual EnterpriseConnectionDetails GetSessionConnectionDetails(string sessionID, long hostID, string sessionKey)
         {
             try
             {
@@ -141,7 +141,7 @@ namespace Myrtille.Services
             }
         }
 
-        public string CreateUserSession(string sessionID, long hostID, string username, string password, string domain)
+        public virtual string CreateUserSession(string sessionID, long hostID, string username, string password, string domain)
         {
             try
             {
@@ -155,7 +155,7 @@ namespace Myrtille.Services
             }
         }
 
-        public bool ChangeUserPassword(string username, string oldPassword, string newPassword)
+        public virtual bool ChangeUserPassword(string username, string oldPassword, string newPassword)
         {
             try
             {
@@ -169,7 +169,7 @@ namespace Myrtille.Services
             }
         }
 
-        public bool AddSessionHostCredentials(EnterpriseHostSessionCredentials credentials)
+        public virtual bool AddSessionHostCredentials(EnterpriseHostSessionCredentials credentials)
         {
             try
             {
