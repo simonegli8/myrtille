@@ -33,7 +33,8 @@ namespace Myrtille.Services
             when it's over, the old process is stopped, all its allocated resources are returned to the operating system and the new process takes over
             */
 
-            IISHelper.RecycleIISApplicationPool(poolName);
+            //IISHelper.RecycleIISApplicationPool(poolName);
+            IISHelper.RestartWebApplication();
         }
     }
 }

@@ -1,12 +1,10 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27428.2015
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35707.178 d17.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Myrtille.Common", "Myrtille.Common\Myrtille.Common.csproj", "{37630774-1321-4E6A-8661-4430A8946E9E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Myrtille.Web", "Myrtille.Web\Myrtille.Web.csproj", "{F00C33EB-EDA4-4980-AC2A-0BF574913A24}"
-EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Myrtille.Setup", "Myrtille.Setup\Myrtille.Setup.vdproj", "{C12076FA-B3EF-4C62-841B-BE7BF6E4754B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Myrtille.Services", "Myrtille.Services\Myrtille.Services.csproj", "{5F357488-8DEF-4E95-874E-FC526D92DE29}"
 EndProject
@@ -444,44 +442,6 @@ Global
 		{F00C33EB-EDA4-4980-AC2A-0BF574913A24}.RelWithDebInfo|x64.Build.0 = Release|Any CPU
 		{F00C33EB-EDA4-4980-AC2A-0BF574913A24}.RelWithDebInfo|x86.ActiveCfg = Release|Any CPU
 		{F00C33EB-EDA4-4980-AC2A-0BF574913A24}.RelWithDebInfo|x86.Build.0 = Release|Any CPU
-		{C12076FA-B3EF-4C62-841B-BE7BF6E4754B}.Debug|.NET.ActiveCfg = Debug
-		{C12076FA-B3EF-4C62-841B-BE7BF6E4754B}.Debug|Any CPU.ActiveCfg = Debug
-		{C12076FA-B3EF-4C62-841B-BE7BF6E4754B}.Debug|Mixed Platforms.ActiveCfg = Debug
-		{C12076FA-B3EF-4C62-841B-BE7BF6E4754B}.Debug|Win32.ActiveCfg = Debug
-		{C12076FA-B3EF-4C62-841B-BE7BF6E4754B}.Debug|x64.ActiveCfg = Debug
-		{C12076FA-B3EF-4C62-841B-BE7BF6E4754B}.Debug|x86.ActiveCfg = Debug
-		{C12076FA-B3EF-4C62-841B-BE7BF6E4754B}.Debug|x86.Build.0 = Debug
-		{C12076FA-B3EF-4C62-841B-BE7BF6E4754B}.MinSizeRel|.NET.ActiveCfg = Release
-		{C12076FA-B3EF-4C62-841B-BE7BF6E4754B}.MinSizeRel|.NET.Build.0 = Release
-		{C12076FA-B3EF-4C62-841B-BE7BF6E4754B}.MinSizeRel|Any CPU.ActiveCfg = Release
-		{C12076FA-B3EF-4C62-841B-BE7BF6E4754B}.MinSizeRel|Any CPU.Build.0 = Release
-		{C12076FA-B3EF-4C62-841B-BE7BF6E4754B}.MinSizeRel|Mixed Platforms.ActiveCfg = Release
-		{C12076FA-B3EF-4C62-841B-BE7BF6E4754B}.MinSizeRel|Mixed Platforms.Build.0 = Release
-		{C12076FA-B3EF-4C62-841B-BE7BF6E4754B}.MinSizeRel|Win32.ActiveCfg = Release
-		{C12076FA-B3EF-4C62-841B-BE7BF6E4754B}.MinSizeRel|Win32.Build.0 = Release
-		{C12076FA-B3EF-4C62-841B-BE7BF6E4754B}.MinSizeRel|x64.ActiveCfg = Release
-		{C12076FA-B3EF-4C62-841B-BE7BF6E4754B}.MinSizeRel|x64.Build.0 = Release
-		{C12076FA-B3EF-4C62-841B-BE7BF6E4754B}.MinSizeRel|x86.ActiveCfg = Release
-		{C12076FA-B3EF-4C62-841B-BE7BF6E4754B}.MinSizeRel|x86.Build.0 = Release
-		{C12076FA-B3EF-4C62-841B-BE7BF6E4754B}.Release|.NET.ActiveCfg = Release
-		{C12076FA-B3EF-4C62-841B-BE7BF6E4754B}.Release|Any CPU.ActiveCfg = Release
-		{C12076FA-B3EF-4C62-841B-BE7BF6E4754B}.Release|Mixed Platforms.ActiveCfg = Release
-		{C12076FA-B3EF-4C62-841B-BE7BF6E4754B}.Release|Win32.ActiveCfg = Release
-		{C12076FA-B3EF-4C62-841B-BE7BF6E4754B}.Release|x64.ActiveCfg = Release
-		{C12076FA-B3EF-4C62-841B-BE7BF6E4754B}.Release|x86.ActiveCfg = Release
-		{C12076FA-B3EF-4C62-841B-BE7BF6E4754B}.Release|x86.Build.0 = Release
-		{C12076FA-B3EF-4C62-841B-BE7BF6E4754B}.RelWithDebInfo|.NET.ActiveCfg = Release
-		{C12076FA-B3EF-4C62-841B-BE7BF6E4754B}.RelWithDebInfo|.NET.Build.0 = Release
-		{C12076FA-B3EF-4C62-841B-BE7BF6E4754B}.RelWithDebInfo|Any CPU.ActiveCfg = Release
-		{C12076FA-B3EF-4C62-841B-BE7BF6E4754B}.RelWithDebInfo|Any CPU.Build.0 = Release
-		{C12076FA-B3EF-4C62-841B-BE7BF6E4754B}.RelWithDebInfo|Mixed Platforms.ActiveCfg = Release
-		{C12076FA-B3EF-4C62-841B-BE7BF6E4754B}.RelWithDebInfo|Mixed Platforms.Build.0 = Release
-		{C12076FA-B3EF-4C62-841B-BE7BF6E4754B}.RelWithDebInfo|Win32.ActiveCfg = Release
-		{C12076FA-B3EF-4C62-841B-BE7BF6E4754B}.RelWithDebInfo|Win32.Build.0 = Release
-		{C12076FA-B3EF-4C62-841B-BE7BF6E4754B}.RelWithDebInfo|x64.ActiveCfg = Release
-		{C12076FA-B3EF-4C62-841B-BE7BF6E4754B}.RelWithDebInfo|x64.Build.0 = Release
-		{C12076FA-B3EF-4C62-841B-BE7BF6E4754B}.RelWithDebInfo|x86.ActiveCfg = Release
-		{C12076FA-B3EF-4C62-841B-BE7BF6E4754B}.RelWithDebInfo|x86.Build.0 = Release
 		{5F357488-8DEF-4E95-874E-FC526D92DE29}.Debug|.NET.ActiveCfg = Debug|Any CPU
 		{5F357488-8DEF-4E95-874E-FC526D92DE29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5F357488-8DEF-4E95-874E-FC526D92DE29}.Debug|Any CPU.Build.0 = Debug|Any CPU

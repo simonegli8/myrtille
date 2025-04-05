@@ -235,6 +235,13 @@
       <DependentUpon>SocketHandler.ashx</DependentUpon>
     </Compile>
     <Compile Include="src\Clients\ApplicationPoolClient.cs" />
+    <None Include="src\Clients\Old\ApplicationPoolClient.cs" />
+    <None Include="src\Clients\Old\ConnectionClient.cs" />
+    <None Include="src\Clients\Old\EnterpriseClient.cs" />
+    <None Include="src\Clients\Old\FileStorageClient.cs" />
+    <None Include="src\Clients\Old\MFAAuthenticationClient.cs" />
+    <None Include="src\Clients\Old\PrinterClient.cs" />
+    <None Include="src\Clients\Old\RemoteSessionProcessClient.cs" />
     <Compile Include="src\Controllers\DisconnectionController.cs" />
     <Compile Include="src\Controllers\SharingControler.cs" />
     <Compile Include="src\Handlers\RemoteSessionLongPollingHandler.cs" />
@@ -522,6 +529,10 @@
       <Project>{010e1702-3045-4b13-bfb6-06ffc60b5cbb}</Project>
       <Name>Myrtille.Services.Contracts</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Myrtille.Services\Myrtille.Services.csproj">
+      <Project>{5f357488-8def-4e95-874e-fc526d92de29}</Project>
+      <Name>Myrtille.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="node_modules\%40interactjs\types\index.d.ts" />
@@ -532,6 +543,7 @@
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -558,7 +570,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>2323</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost/Myrtille</IISUrl>
+          <IISUrl>http://localhost/MyrtilleTest</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

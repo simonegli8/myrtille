@@ -23,5 +23,19 @@ using Myrtille.Services.Contracts;
 
 namespace Myrtille.Web
 {
-    public class MFAAuthenticationClient : Services.MFAAuthentication { }
+    public class ApplicationPoolClient : ClientBase<IApplicationPoolService>, IApplicationPoolService
+    {
+        public void RecycleApplicationPool(string poolName)
+        {
+            try
+            {
+                Channel.RecycleApplicationPool(poolName);
+            }
+            catch (Exception exc)
+            {
+                Trace.TraceError("Failed to recyle application pool {0} ({1})", poolName, exc);
+                throw;
+            }
+        }
+    }
 }

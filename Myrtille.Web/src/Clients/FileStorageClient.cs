@@ -25,45 +25,5 @@ using Myrtille.Services.Contracts;
 
 namespace Myrtille.Web
 {
-    public class FileStorageClient : ClientBase<IFileStorage>, IFileStorage
-    {
-        public List<string> GetUserDocumentsFolderFiles(Guid remoteSessionId, string userDomain, string userName, string userPassword)
-        {
-            try
-            {
-                return Channel.GetUserDocumentsFolderFiles(remoteSessionId, userDomain, userName, userPassword);
-            }
-            catch (Exception exc)
-            {
-                Trace.TraceError("Failed to list file(s) from user {0} documents folder, remote session {1} ({2})", userName, remoteSessionId, exc);
-                throw;
-            }
-        }
-
-        public void UploadFileToUserDocumentsFolder(UploadRequest uploadRequest)
-        {
-            try
-            {
-                Channel.UploadFileToUserDocumentsFolder(uploadRequest);
-            }
-            catch (Exception exc)
-            {
-                Trace.TraceError("Failed to upload file {0} to user {1} documents folder, remote session {2} ({3})", uploadRequest.FileName, uploadRequest.UserName, uploadRequest.RemoteSessionId, exc);
-                throw;
-            }
-        }
-
-        public Stream DownloadFileFromUserDocumentsFolder(Guid remoteSessionId, string userDomain, string userName, string userPassword, string fileName)
-        {
-            try
-            {
-                return Channel.DownloadFileFromUserDocumentsFolder(remoteSessionId, userDomain, userName, userPassword, fileName);
-            }
-            catch (Exception exc)
-            {
-                Trace.TraceError("Failed to download file {0} from user {1} documents folder, remote session {2} ({3})", fileName, userName, remoteSessionId, exc);
-                throw;
-            }
-        }
-    }
+    public class FileStorageClient : Services.FileStorage { }
 }

@@ -21,6 +21,8 @@ using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
+using System.Web;
+using System.IO;
 using Microsoft.Web.Administration;
 using Microsoft.Win32;
 
@@ -201,18 +203,48 @@ namespace Myrtille.Helpers
             }
         }
 
-        #endregion
+		/// <summary>
+		/// Restarts the Web Application
+		/// Requires either Full Trust (HttpRuntime.UnloadAppDomain)
+		/// or Write access to web.config.
+		/// </summary>
+		public static bool RestartWebApplication()
+		{
+			try
+			{
+				// This requires full trust so this will fail
+				// in many scenarios
+				HttpRuntime.UnloadAppDomain();
+                return true;
+			}
+			catch { }
+			// Couldn't unload with Runtime - let's try modifying web.config
+			string ConfigPath = HttpContext.Current.Request.PhysicalApplicationPath + "\\web.config";
 
-        // the below methods use the default web site; extend if needed
+			try
+			{
+                File.SetLastWriteTimeUtc(ConfigPath, DateTime.UtcNow);
+			}
+			catch
+			{
+				return false;
+			}
+			return true;
+		}
 
-        #region application
 
-        /// <summary>
-        /// check existence of a IIS application
-        /// </summary>
-        /// <param name="applicationName"></param>
-        /// <returns>exists or not</returns>
-        public static bool IsIISApplicationExists(
+		#endregion
+
+		// the below methods use the default web site; extend if needed
+
+		#region application
+
+		/// <summary>
+		/// check existence of a IIS application
+		/// </summary>
+		/// <param name="applicationName"></param>
+		/// <returns>exists or not</returns>
+		public static bool IsIISApplicationExists(
             string applicationName)
         {
             Trace.TraceInformation("Checking existence of IIS application {0}", applicationName);
