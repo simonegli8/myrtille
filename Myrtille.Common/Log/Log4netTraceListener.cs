@@ -30,10 +30,11 @@ namespace Myrtille.Log
 
         public Log4netTraceListener()
         {
-            _log = LogManager.GetLogger("System.Diagnostics redirection");
-        }
+			//_log = LogManager.GetLogger("System.Diagnostics redirection");
+			_log = LogManager.GetLogger(typeof(System.Diagnostics.TextWriterTraceListener));
+		}
 
-        public Log4netTraceListener(ILog log)
+		public Log4netTraceListener(ILog log)
         {
             _log = log;
         }

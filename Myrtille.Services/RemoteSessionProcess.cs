@@ -181,9 +181,10 @@ namespace Myrtille.Services
 #if Myrtille
                     _process.StartInfo.FileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, clientFileName);
 #else
-                    _process.StartInfo.FileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "bin", clientFileName);
+					_process.StartInfo.FileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "bin", clientFileName);
+					//_process.StartInfo.FileName = Path.Combine("C:\\Program Files (x86)\\Myrtille", "bin", clientFileName);
 #endif
-                }
+				}
 
 				// ensure the host client executable does exists
 				if (!File.Exists(_process.StartInfo.FileName))
