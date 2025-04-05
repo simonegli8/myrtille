@@ -58,9 +58,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Myrtille.Common\Myrtille.Common.csproj" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="AdobeIcon.ico" />
     <Content Include="gsdll64.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -68,5 +65,8 @@
     <Content Include="gsdll32.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Myrtille.Library\Myrtille.Library.csproj" />
   </ItemGroup>
 </Project>

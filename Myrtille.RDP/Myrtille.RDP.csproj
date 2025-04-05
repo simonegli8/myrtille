@@ -32,7 +32,7 @@
         </PostBuildEvent>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="log4net" Version="2.0.8" />
+        <PackageReference Include="log4net" Version="3.0.4" />
     </ItemGroup>
     <ItemGroup>
         <Reference Include="System.Configuration" />
@@ -43,10 +43,9 @@
         <Reference Include="System.Net.Http" />
     </ItemGroup>
     <ItemGroup>
-        <ProjectReference Include="..\Myrtille.Common\Myrtille.Common.csproj" />
-        <ProjectReference Include="..\Myrtille.Services.Contracts\Myrtille.Services.Contracts.csproj" />
+        <Content Include="FreeRDP.ico" />
     </ItemGroup>
     <ItemGroup>
-        <Content Include="FreeRDP.ico" />
+      <ProjectReference Include="..\Myrtille.Library\Myrtille.Library.csproj" />
     </ItemGroup>
 </Project>

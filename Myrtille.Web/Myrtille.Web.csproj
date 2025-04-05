@@ -30,7 +30,7 @@
     </ItemGroup>
     <ItemGroup>
         <PackageReference Include="Antlr" Version="3.4.1.9004" />
-        <PackageReference Include="log4net" Version="2.0.8" />
+        <PackageReference Include="log4net" Version="3.0.4" />
         <PackageReference Include="Microsoft.AspNet.Web.Optimization" Version="1.1.3" />
         <PackageReference Include="Microsoft.AspNet.WebApi" Version="5.2.7" />
         <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
@@ -423,13 +423,9 @@
         </None>
     </ItemGroup>
     <ItemGroup>
-        <ProjectReference Include="..\Myrtille.Common\Myrtille.Common.csproj" />
-        <ProjectReference Include="..\Myrtille.Enterprise\Myrtille.Enterprise.csproj" />
-        <ProjectReference Include="..\Myrtille.MFAProviders\Myrtille.MFAProviders.csproj" />
+        <ProjectReference Include="..\Myrtille.Library\Myrtille.Library.csproj" />
         <ProjectReference Include="..\Myrtille.Printer\Myrtille.Printer.csproj" />
         <ProjectReference Include="..\Myrtille.RDP\Myrtille.RDP.csproj" />
-        <ProjectReference Include="..\Myrtille.Services.Contracts\Myrtille.Services.Contracts.csproj" />
-        <ProjectReference Include="..\Myrtille.Services\Myrtille.Services.csproj" />
         <ProjectReference Include="..\Myrtille.SSH\Myrtille.SSH.csproj" />
     </ItemGroup>
     <ItemGroup>

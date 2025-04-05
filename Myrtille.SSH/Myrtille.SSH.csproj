@@ -19,7 +19,7 @@
         <ApplicationIcon>icons8-console-50-black.ico</ApplicationIcon>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="log4net" Version="2.0.8" />
+        <PackageReference Include="log4net" Version="3.0.4" />
         <PackageReference Include="SSH.NET" Version="2024.2.0" />
     </ItemGroup>
     <ItemGroup>
@@ -29,10 +29,9 @@
         <Reference Include="System.Net.Http" />
     </ItemGroup>
     <ItemGroup>
-        <ProjectReference Include="..\Myrtille.Common\Myrtille.Common.csproj" />
-        <ProjectReference Include="..\Myrtille.Services.Contracts\Myrtille.Services.Contracts.csproj" />
+        <Content Include="icons8-console-50-black.ico" />
     </ItemGroup>
     <ItemGroup>
-        <Content Include="icons8-console-50-black.ico" />
+      <ProjectReference Include="..\Myrtille.Library\Myrtille.Library.csproj" />
     </ItemGroup>
 </Project>

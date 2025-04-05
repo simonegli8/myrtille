@@ -18,8 +18,13 @@
         <Compile Remove="Helpers\FirewallHelper.cs" />
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="log4net" Version="2.0.8" />
+        <PackageReference Include="log4net" Version="3.0.4" />
         <PackageReference Include="Microsoft.Web.Administration" Version="7.0.0.0" />
+        <Reference Include="CertEnroll_Interop, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+            <HintPath>.\CertEnroll_Interop.dll</HintPath>
+            <SpecificVersion>False</SpecificVersion>
+            <EmbedInteropTypes>False</EmbedInteropTypes>
+        </Reference>
     </ItemGroup>
     <ItemGroup Condition="$(TargetFramework) == 'net8.0'">
         <PackageReference Include="System.DirectoryServices" Version="9.0.3" />
@@ -27,12 +32,7 @@
         <PackageReference Include="EstrellasDeEsperanza.WebFormsForCore.Web" Version="1.2.8" />
         <PackageReference Include="EstrellasDeEsperanza.WebFormsForCore.Configuration" Version="1.2.8" />
     </ItemGroup>
-    <ItemGroup>
-        <Reference Include="CertEnroll_Interop, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-            <HintPath>.\CertEnroll_Interop.dll</HintPath>
-            <SpecificVersion>False</SpecificVersion>
-            <EmbedInteropTypes>False</EmbedInteropTypes>
-        </Reference>
+    <ItemGroup Condition="$(TargetFramework) == 'net48'">        
         <Reference Include="System.Configuration" />
         <Reference Include="System.Configuration.Install" />
         <Reference Include="System.DirectoryServices" />

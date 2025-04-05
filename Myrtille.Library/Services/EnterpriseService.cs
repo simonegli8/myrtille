@@ -1,0 +1,192 @@
+﻿/*
+    Myrtille: A native HTML4/5 Remote Desktop Protocol client.
+
+    Copyright(c) 2014-2021 Cedric Coste
+    Copyright(c) 2018 Paul Oliver (Olive Innovations)
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+*/
+
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using Myrtille.Enterprise;
+using Myrtille.Services.Contracts;
+
+namespace Myrtille.Services
+{
+    public class EnterpriseService : IEnterpriseService
+    {
+		public static IEnterpriseAdapter _enterpriseAdapter = null;
+
+		public static string _enterpriseAdminGroup;
+		public static string _enterpriseDomain;
+		public static string _enterpriseNetbiosDomain;
+
+		public virtual EnterpriseMode GetMode()
+        {
+            return _enterpriseAdapter == null ? EnterpriseMode.None : (_enterpriseAdapter is LocalAdmin ? EnterpriseMode.Local : EnterpriseMode.Domain);
+        }
+
+        public virtual EnterpriseSession Authenticate(string username, string password)
+        {
+            try
+            {
+                Trace.TraceInformation("Requesting authentication of user {0}", string.IsNullOrEmpty(_enterpriseNetbiosDomain) ? username : string.Format("{0}\\{1}", _enterpriseNetbiosDomain, username));
+                return _enterpriseAdapter.Authenticate(username, password, _enterpriseAdminGroup, _enterpriseDomain, _enterpriseNetbiosDomain);
+            }
+            catch (Exception ex)
+            {
+                Trace.TraceError("Failed to authenticate user {0}, ({1})", username, ex);
+                return null;
+            }
+        }
+
+        public virtual void Logout(string sessionID)
+        {
+            try
+            {
+                _enterpriseAdapter.Logout(sessionID);
+            }
+            catch (Exception ex)
+            {
+                Trace.TraceError("Failed to logout session {0}", sessionID, ex);
+            }
+        }
+
+        public virtual long? AddHost(EnterpriseHostEdit editHost, string sessionID)
+        {
+            try
+            {
+                Trace.TraceInformation("Add host requested, host {0}", editHost.HostName);
+                return _enterpriseAdapter.AddHost(editHost, sessionID);
+            }catch(Exception ex)
+            {
+                Trace.TraceError("Failed to add host {0}, ({1})",editHost.HostName, ex);
+                return null;
+            }
+        }
+
+        public virtual EnterpriseHostEdit GetHost(long hostID, string sessionID)
+        {
+            try
+            {
+                Trace.TraceInformation("Edit host requested, host {0}", hostID);
+                return _enterpriseAdapter.GetHost(hostID, sessionID);
+            }
+            catch (Exception ex)
+            {
+                Trace.TraceError("Failed to get host {0}, ({1})", hostID, ex);
+                return null;
+            }
+        }
+
+        public virtual bool UpdateHost(EnterpriseHostEdit editHost, string sessionID)
+        {
+            try
+            {
+                Trace.TraceInformation("Update host requested, host {0}", editHost.HostName);
+                return _enterpriseAdapter.UpdateHost(editHost, sessionID);
+            }
+            catch (Exception ex)
+            {
+                Trace.TraceError("Failed to update host {0}, ({1})", editHost.HostName, ex);
+                return false;
+            }
+        }
+
+        public virtual bool DeleteHost(long hostID, string sessionID)
+        {
+            try
+            {
+                Trace.TraceInformation("Deleting host");
+                return _enterpriseAdapter.DeleteHost(hostID, sessionID);
+            }
+            catch (Exception ex)
+            {
+                Trace.TraceError("Unable to delete host {0} ({1})", hostID, ex);
+                return false;
+            }
+        }
+
+        public virtual List<EnterpriseHost> GetSessionHosts(string sessionID)
+        {
+            try
+            {
+                Trace.TraceInformation("Requesting session host list");
+                return _enterpriseAdapter.SessionHosts(sessionID);
+            }
+            catch (Exception ex)
+            {
+                Trace.TraceError("Unable to get host list {0}", ex);
+                return new List<EnterpriseHost>();
+            }
+        }
+
+        public virtual EnterpriseConnectionDetails GetSessionConnectionDetails(string sessionID, long hostID, string sessionKey)
+        {
+            try
+            {
+                Trace.TraceInformation("Requesting session details");
+                return _enterpriseAdapter.GetSessionConnectionDetails(sessionID, hostID, sessionKey);
+            }
+            catch (Exception ex)
+            {
+                Trace.TraceError("Unable to get session connection details {0}", ex);
+                return null;
+            }
+        }
+
+        public virtual string CreateUserSession(string sessionID, long hostID, string username, string password, string domain)
+        {
+            try
+            {
+                Trace.TraceInformation("Create user session requested, host {0}, user {1}", hostID, string.IsNullOrEmpty(domain) ? username : string.Format("{0}\\{1}", domain, username));
+                return _enterpriseAdapter.CreateUserSession(sessionID, hostID, username, password, domain);
+            }
+            catch (Exception ex)
+            {
+                Trace.TraceError("Failed to create session {0}, ({1})", hostID, ex);
+                return null;
+            }
+        }
+
+        public virtual bool ChangeUserPassword(string username, string oldPassword, string newPassword)
+        {
+            try
+            {
+                Trace.TraceInformation("Change password for user {0}", username);
+                return _enterpriseAdapter.ChangeUserPassword(username, oldPassword, newPassword, _enterpriseDomain);
+            }
+            catch (Exception ex)
+            {
+                Trace.TraceError("Failed to change password for user {0}, ({1})", username, ex);
+                return false;
+            }
+        }
+
+        public virtual bool AddSessionHostCredentials(EnterpriseHostSessionCredentials credentials)
+        {
+            try
+            {
+                Trace.TraceInformation("creating session credentials for {0}", string.IsNullOrEmpty(credentials.Domain) ? credentials.Username : string.Format("{0}\\{1}", credentials.Domain, credentials.Username));
+                return _enterpriseAdapter.AddSessionHostCredentials(credentials);
+            }
+            catch (Exception ex)
+            {
+                Trace.TraceError("Failed to set session credentials for user {0}, ({1})", credentials.Username, ex);
+                return false;
+            }
+        }
+    }
+}
