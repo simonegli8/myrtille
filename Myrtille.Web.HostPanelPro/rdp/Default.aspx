@@ -41,7 +41,7 @@
         <link rel="stylesheet" type="text/css" href="<%=BundleTable.Bundles.ResolveBundleUrl("~/rdp/css/Default.css", true)%>"/>
         <link rel="stylesheet" type="text/css" href="<%=BundleTable.Bundles.ResolveBundleUrl("~/rdp/css/xterm.css", true)%>"/>
 
-        <script language="javascript" type="text/javascript" src="<%=BundleTable.Bundles.ResolveBundleUrl("~/rdp/rdp/js/tools/common.js", true)%>"></script>
+        <script language="javascript" type="text/javascript" src="<%=BundleTable.Bundles.ResolveBundleUrl("~/rdp/js/tools/common.js", true)%>"></script>
         <script language="javascript" type="text/javascript" src="<%=BundleTable.Bundles.ResolveBundleUrl("~/rdp/js/tools/convert.js", true)%>"></script>
         <script language="javascript" type="text/javascript" src="<%=BundleTable.Bundles.ResolveBundleUrl("~/rdp/js/myrtille.js", true)%>"></script>
         <script language="javascript" type="text/javascript" src="<%=BundleTable.Bundles.ResolveBundleUrl("~/rdp/js/config.js", true)%>"></script>
