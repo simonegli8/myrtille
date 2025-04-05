@@ -5,6 +5,7 @@
     changes from original code are surrounded by "myrtille" region tags
 */
 
+#if NETFRAMEWORK
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -1328,3 +1329,4 @@ namespace Myrtille.PdfScribe
         #endregion
     }
 }
+#endif

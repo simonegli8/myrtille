@@ -20,6 +20,8 @@
 // Can be used with MessageBox to display the box in front of the active window, such as:
 //    MessageBox.Show(ActiveWindow.Active, "Hello, World!");
 
+#if NETFRAMEWORK
+
 using System;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
@@ -57,3 +59,4 @@ namespace Myrtille.Helpers
         #endregion
     }
 }
+#endif

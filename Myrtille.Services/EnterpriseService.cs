@@ -27,17 +27,23 @@ namespace Myrtille.Services
 {
     public class EnterpriseService : IEnterpriseService
     {
-        public virtual EnterpriseMode GetMode()
+		public static IEnterpriseAdapter _enterpriseAdapter = null;
+
+		public static string _enterpriseAdminGroup;
+		public static string _enterpriseDomain;
+		public static string _enterpriseNetbiosDomain;
+
+		public virtual EnterpriseMode GetMode()
         {
-            return Program._enterpriseAdapter == null ? EnterpriseMode.None : (Program._enterpriseAdapter is LocalAdmin ? EnterpriseMode.Local : EnterpriseMode.Domain);
+            return _enterpriseAdapter == null ? EnterpriseMode.None : (_enterpriseAdapter is LocalAdmin ? EnterpriseMode.Local : EnterpriseMode.Domain);
         }
 
         public virtual EnterpriseSession Authenticate(string username, string password)
         {
             try
             {
-                Trace.TraceInformation("Requesting authentication of user {0}", string.IsNullOrEmpty(Program._enterpriseNetbiosDomain) ? username : string.Format("{0}\\{1}", Program._enterpriseNetbiosDomain, username));
-                return Program._enterpriseAdapter.Authenticate(username, password, Program._enterpriseAdminGroup, Program._enterpriseDomain, Program._enterpriseNetbiosDomain);
+                Trace.TraceInformation("Requesting authentication of user {0}", string.IsNullOrEmpty(_enterpriseNetbiosDomain) ? username : string.Format("{0}\\{1}", _enterpriseNetbiosDomain, username));
+                return _enterpriseAdapter.Authenticate(username, password, _enterpriseAdminGroup, _enterpriseDomain, _enterpriseNetbiosDomain);
             }
             catch (Exception ex)
             {
@@ -50,7 +56,7 @@ namespace Myrtille.Services
         {
             try
             {
-                Program._enterpriseAdapter.Logout(sessionID);
+                _enterpriseAdapter.Logout(sessionID);
             }
             catch (Exception ex)
             {
@@ -63,7 +69,7 @@ namespace Myrtille.Services
             try
             {
                 Trace.TraceInformation("Add host requested, host {0}", editHost.HostName);
-                return Program._enterpriseAdapter.AddHost(editHost, sessionID);
+                return _enterpriseAdapter.AddHost(editHost, sessionID);
             }catch(Exception ex)
             {
                 Trace.TraceError("Failed to add host {0}, ({1})",editHost.HostName, ex);
@@ -76,7 +82,7 @@ namespace Myrtille.Services
             try
             {
                 Trace.TraceInformation("Edit host requested, host {0}", hostID);
-                return Program._enterpriseAdapter.GetHost(hostID, sessionID);
+                return _enterpriseAdapter.GetHost(hostID, sessionID);
             }
             catch (Exception ex)
             {
@@ -90,7 +96,7 @@ namespace Myrtille.Services
             try
             {
                 Trace.TraceInformation("Update host requested, host {0}", editHost.HostName);
-                return Program._enterpriseAdapter.UpdateHost(editHost, sessionID);
+                return _enterpriseAdapter.UpdateHost(editHost, sessionID);
             }
             catch (Exception ex)
             {
@@ -104,7 +110,7 @@ namespace Myrtille.Services
             try
             {
                 Trace.TraceInformation("Deleting host");
-                return Program._enterpriseAdapter.DeleteHost(hostID, sessionID);
+                return _enterpriseAdapter.DeleteHost(hostID, sessionID);
             }
             catch (Exception ex)
             {
@@ -118,7 +124,7 @@ namespace Myrtille.Services
             try
             {
                 Trace.TraceInformation("Requesting session host list");
-                return Program._enterpriseAdapter.SessionHosts(sessionID);
+                return _enterpriseAdapter.SessionHosts(sessionID);
             }
             catch (Exception ex)
             {
@@ -132,7 +138,7 @@ namespace Myrtille.Services
             try
             {
                 Trace.TraceInformation("Requesting session details");
-                return Program._enterpriseAdapter.GetSessionConnectionDetails(sessionID, hostID, sessionKey);
+                return _enterpriseAdapter.GetSessionConnectionDetails(sessionID, hostID, sessionKey);
             }
             catch (Exception ex)
             {
@@ -146,7 +152,7 @@ namespace Myrtille.Services
             try
             {
                 Trace.TraceInformation("Create user session requested, host {0}, user {1}", hostID, string.IsNullOrEmpty(domain) ? username : string.Format("{0}\\{1}", domain, username));
-                return Program._enterpriseAdapter.CreateUserSession(sessionID, hostID, username, password, domain);
+                return _enterpriseAdapter.CreateUserSession(sessionID, hostID, username, password, domain);
             }
             catch (Exception ex)
             {
@@ -160,7 +166,7 @@ namespace Myrtille.Services
             try
             {
                 Trace.TraceInformation("Change password for user {0}", username);
-                return Program._enterpriseAdapter.ChangeUserPassword(username, oldPassword, newPassword, Program._enterpriseDomain);
+                return _enterpriseAdapter.ChangeUserPassword(username, oldPassword, newPassword, _enterpriseDomain);
             }
             catch (Exception ex)
             {
@@ -174,7 +180,7 @@ namespace Myrtille.Services
             try
             {
                 Trace.TraceInformation("creating session credentials for {0}", string.IsNullOrEmpty(credentials.Domain) ? credentials.Username : string.Format("{0}\\{1}", credentials.Domain, credentials.Username));
-                return Program._enterpriseAdapter.AddSessionHostCredentials(credentials);
+                return _enterpriseAdapter.AddSessionHostCredentials(credentials);
             }
             catch (Exception ex)
             {

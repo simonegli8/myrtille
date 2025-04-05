@@ -526,10 +526,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Myrtille.Admin.Services\Myrtille.Admin.Services.csproj">
-      <Project>{2705b2a1-b47a-4e4d-96f9-bace48f9a807}</Project>
-      <Name>Myrtille.Admin.Services</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Myrtille.Common\Myrtille.Common.csproj">
       <Project>{37630774-1321-4E6A-8661-4430A8946E9E}</Project>
       <Name>Myrtille.Common</Name>

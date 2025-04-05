@@ -22,9 +22,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
-using System.ServiceModel;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 using Myrtille.Services.ConnectionBroker;
 using Myrtille.Services.Contracts;
 using Cassia;
@@ -193,7 +191,7 @@ namespace Myrtille.Services
                     var msg = string.Format("The host client executable ({0}) is missing. Please read documentation for steps to build it", _process.StartInfo.FileName);
                     if (Environment.UserInteractive)
                     {
-                        MessageBox.Show(msg);
+                        Console.WriteLine(msg);
                     }
                     Trace.TraceError(msg);
                     return;
@@ -397,7 +395,7 @@ namespace Myrtille.Services
 
                 // set the callback instance
                 // the wcf service binding "wsDualHttpBinding" allows for duplex communication
-                _callback = _callback ?? OperationContext.Current.GetCallbackChannel<IRemoteSessionProcessCallback>();
+                //_callback = _callback ?? OperationContext.Current.GetCallbackChannel<IRemoteSessionProcessCallback>();
 
                 _process.Start();
             }

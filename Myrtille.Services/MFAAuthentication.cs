@@ -23,24 +23,26 @@ namespace Myrtille.Services
 {
     public class MFAAuthentication : IMFAAuthentication
     {
-        public virtual bool GetState()
+		public static IMultifactorAuthenticationAdapter _multifactorAdapter = null;
+
+		public virtual bool GetState()
         {
-            return Program._multifactorAdapter != null;
+            return _multifactorAdapter != null;
         }
 
         public virtual bool Authenticate(string username, string password, string clientIP = null)
         {
-            return Program._multifactorAdapter.Authenticate(username, password, clientIP);
+            return _multifactorAdapter.Authenticate(username, password, clientIP);
         }
 
         public virtual string GetPromptLabel()
         {
-            return Program._multifactorAdapter.PromptLabel;
+            return _multifactorAdapter.PromptLabel;
         }
 
         public virtual string GetProviderURL()
         {
-            return Program._multifactorAdapter.ProviderURL;
+            return _multifactorAdapter.ProviderURL;
         }
     }
 }
