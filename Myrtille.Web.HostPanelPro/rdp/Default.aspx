@@ -63,7 +63,7 @@
         <script language="javascript" type="text/javascript" src="<%=BundleTable.Bundles.ResolveBundleUrl("~/rdp/js/xterm/xterm.js", true)%>"></script>
         <script language="javascript" type="text/javascript" src="<%=BundleTable.Bundles.ResolveBundleUrl("~/rdp/js/xterm/addons/fit/fit.js", true)%>"></script>
         <script language="javascript" type="text/javascript" src="<%=BundleTable.Bundles.ResolveBundleUrl("~/rdp/js/audio/audiowebsocket.js", true)%>"></script>
-        <script language="javascript" type="text/javascript" src="<%=BundleTable.Bundles.ResolveBundleUrl("~/rdp/node_modules/interactrdp/js/dist/interact.js", true)%>"></script>
+        <script language="javascript" type="text/javascript" src="<%=BundleTable.Bundles.ResolveBundleUrl("~/rdp/node_modules/interactjs/js/dist/interact.js", true)%>"></script>
 
 	</head>
 	

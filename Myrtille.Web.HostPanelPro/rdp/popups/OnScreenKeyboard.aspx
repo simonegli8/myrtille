@@ -28,7 +28,7 @@
 	
     <head>
         <title>Myrtille</title>
-        <link rel="stylesheet" type="text/css" href="<%=BundleTable.Bundles.ResolveBundleUrl("~/rdp/node_modules/simple-keyboard/build/rdp/css/index.css", true)%>"/>
+        <link rel="stylesheet" type="text/css" href="<%=BundleTable.Bundles.ResolveBundleUrl("~/rdp/node_modules/simple-keyboard/build/css/index.css", true)%>"/>
         <script language="javascript" type="text/javascript" src="<%=BundleTable.Bundles.ResolveBundleUrl("~/rdp/node_modules/simple-keyboard/build/index.js", true)%>"></script>
         <script language="javascript" type="text/javascript" src="<%=BundleTable.Bundles.ResolveBundleUrl("~/rdp/node_modules/simple-keyboard-layouts/build/index.js", true)%>"></script>
 	</head>
