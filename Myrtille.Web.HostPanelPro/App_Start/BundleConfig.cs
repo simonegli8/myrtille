@@ -63,9 +63,9 @@ namespace Myrtille.Web
             bundles.Add(new Bundle("~/rdp/js/audio/audiowebsocket.js").Include("~/rdp/js/audio/audiowebsocket.js"));
 
             // nodejs modules shouldn't be modified directly, but compute hashes anyway just in case...
-            bundles.Add(new Bundle("~/node_modules/interactrdp/js/dist/interact.js").Include("~/node_modules/interactrdp/js/dist/interact.js"));
-            bundles.Add(new Bundle("~/node_modules/simple-keyboard/build/index.js").Include("~/node_modules/simple-keyboard/build/index.js"));
-            bundles.Add(new Bundle("~/node_modules/simple-keyboard-layouts/build/index.js").Include("~/node_modules/simple-keyboard-layouts/build/index.js"));
+            bundles.Add(new Bundle("~/rdp/node_modules/interactrdp/js/dist/interact.js").Include("~/rdp/node_modules/interactrdp/js/dist/interact.js"));
+            bundles.Add(new Bundle("~/rdp/node_modules/simple-keyboard/build/index.js").Include("~/rdp/node_modules/simple-keyboard/build/index.js"));
+            bundles.Add(new Bundle("~/rdp/node_modules/simple-keyboard-layouts/build/index.js").Include("~/rdp/node_modules/simple-keyboard-layouts/build/index.js"));
 
             // styles
 
@@ -75,7 +75,7 @@ namespace Myrtille.Web
             bundles.Add(new Bundle("~/rdp/css/xterm.css").Include("~/rdp/css/xterm.css"));
 
             // nodejs modules, same remark as above...
-            bundles.Add(new Bundle("~/node_modules/simple-keyboard/build/rdp/css/index.css").Include("~/node_modules/simple-keyboard/build/rdp/css/index.css"));
+            bundles.Add(new Bundle("~/rdp/node_modules/simple-keyboard/build/rdp/css/index.css").Include("~/rdp/node_modules/simple-keyboard/build/rdp/css/index.css"));
         }
     }
 }

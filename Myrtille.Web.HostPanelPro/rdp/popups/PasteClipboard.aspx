@@ -25,7 +25,7 @@
 	
     <head>
         <title>Myrtille</title>
-        <link rel="stylesheet" type="text/css" href="../rdp/css/Default.css"/>
+        <link rel="stylesheet" type="text/css" href="../css/Default.css"/>
         <script language="javascript" type="text/javascript" src="../js/tools/convert.js"></script>
 	</head>
 

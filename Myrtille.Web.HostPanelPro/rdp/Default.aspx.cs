@@ -403,7 +403,7 @@ namespace Myrtille.Web
                     if (adminDiv.Visible)
                     {
                         adminText.InnerText = "Home";
-                        adminUrl.HRef = "~/";
+                        adminUrl.HRef = "~/rdp";
                     }
                 }
                 // standard mode
