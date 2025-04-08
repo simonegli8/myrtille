@@ -73,9 +73,12 @@ namespace Myrtille.Library
                     RemoteSession.HostType == HostType.RDP ? PipeTransmissionMode.Byte : PipeTransmissionMode.Message,
                     PipeOptions.Asynchronous,
                     0,
+#if NETFRAMEWORK
                     0,
                     pipeSecurity);
-
+#else
+                    0);
+#endif
                 _updatesPipe = new NamedPipeServerStream(
                     "remotesession_" + RemoteSession.Id + "_updates",
                     PipeDirection.InOut,
@@ -83,9 +86,12 @@ namespace Myrtille.Library
                     RemoteSession.HostType == HostType.RDP ? PipeTransmissionMode.Byte : PipeTransmissionMode.Message,
                     PipeOptions.Asynchronous,
                     0,
+#if NETFRAMEWORK
                     0,
                     pipeSecurity);
-
+#else
+                    0);
+#endif
                 // RDP only
                 if (RemoteSession.HostType == HostType.RDP)
                 {
@@ -96,9 +102,13 @@ namespace Myrtille.Library
                         PipeTransmissionMode.Byte,
                         PipeOptions.Asynchronous,
                         audioBufferSize,
+#if NETFRAMEWORK
                         audioBufferSize,
                         pipeSecurity);
-                }
+#else
+                        audioBufferSize);
+#endif
+				}
 
                 // wait for client connection
                 InputsPipe.BeginWaitForConnection(InputsPipeConnected, InputsPipe);

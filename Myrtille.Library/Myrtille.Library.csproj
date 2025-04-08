@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFrameworks>net48</TargetFrameworks>
+        <TargetFrameworks>net48;net8.0</TargetFrameworks>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>disable</Nullable>
         <LangVersion>13</LangVersion>
@@ -19,6 +19,24 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Content Include="Common\x86\ps5ui.dll">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Include="Common\x86\pscript.hlp">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Include="Common\x86\pscript.ntf">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Include="Common\x86\pscript5.dll">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Include="Common\x86\redmon32.dll">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Include="Common\x86\SCPDFPRN.ppd">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
       <Content Include="Services\RDPSetup.reg">
         <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       </Content>
@@ -77,7 +95,7 @@
       </None>
     </ItemGroup>
 
-    <Target Name="CopyBinContent" BeforeTargets="PrepareForRun">
+    <Target Name="CopyBinContent" BeforeTargets="CoreCompile">
         <ItemGroup>
             <Bin64Content Include="Common\amd64\*.*" />
             <Bin32Content Include="Common\x86\*.*" />
@@ -85,6 +103,8 @@
             <BinContent Include="Dlls\*.*" />
         </ItemGroup>
 
+        <Message Text="CopyBinContent:" Importance="high" />
+        <Message Text="TargetDir: $(TargetDir)" Importance="high" />
         <Copy SourceFiles="@(Bin64Content)" DestinationFolder="$(TargetDir)\amd64" />
         <Copy SourceFiles="@(Bin32Content)" DestinationFolder="$(TargetDir)\x86" />
         <Copy SourceFiles="@(BinContent)" DestinationFolder="$(TargetDir)" />

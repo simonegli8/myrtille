@@ -25,6 +25,8 @@ namespace Myrtille.RDP
             //    Thread.Sleep(10000);
             //}
 
+            Debugger.Launch();
+
             // logger
             XmlConfigurator.Configure();
 

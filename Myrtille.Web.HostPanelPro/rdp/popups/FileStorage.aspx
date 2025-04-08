@@ -25,7 +25,7 @@
 	
     <head>
         <title>Myrtille</title>
-        <link rel="stylesheet" type="text/css" href="../rdp/css/Default.css"/>
+        <link rel="stylesheet" type="text/css" href="../css/Default.css"/>
 	</head>
 
     <body onload="onFileToUploadSuccess();">
